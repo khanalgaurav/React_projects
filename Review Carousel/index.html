@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title> 
+    <script src="https://kit.fontawesome.com/385dffd57a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script> 
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+        .content-auto {
+            content-visibility: auto;
+        }
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="h-screen w-screen flex justify-center items-center">
+        <div class="border border-red-500 h-fit flex flex-col items-center w-[700px]">
+            <div class="h-[130px] w-[130px] overflow-hidden rounded-full">
+                <img id="image" src="https://cdn.pixabay.com/photo/2019/12/21/21/15/man-4711375_640.jpg" alt="yoo">
+            </div>
+            <h1 id="name">Name</h1>
+            <p id="post">post</p>
+            <p id="description" class="text-center">description Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus accusamus consectetur quidem. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, id maxime obcaecati impedit voluptas veniam!</p>
+            <div class="flex gap-28">
+                <button id="prev-btn"><i class="fa-solid fa-less-than"></i></button> 
+                <button id="next-btn"><i class="fa-solid fa-greater-than"></i></button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const data = [
+    {
+       source : "https://cdn.pixabay.com/photo/2019/10/29/10/16/model-4586589_640.jpg",
+       name : "Suzan Decoc",
+       post : "Developer",
+       desc : "askld jfsdj flkajsdlfjal sdjflasjdfljasdfjal skjdfl;ajsdlfjasl;kdjflasjdflasdlkfjaslkdjfa sjdflasjkdflkjas fljasdlf owefa nvaoif afasdfoiwae" 
+    },
+    {
+        source : "https://cdn.pixabay.com/photo/2014/01/18/06/51/girl-247302_640.jpg",
+       name : "Omayera",
+       post : "HR",
+       desc : "dkj falsdfjalskdjflkasjdlkfjaskdj flkajsdlfkjasldjf lkasjflksdjlajsdjflaskdj flkas f jdlkj aslfjasdj flkasjfa sjdlfkjasdlfjd" 
+    },
+    {
+        source : "https://cdn.pixabay.com/photo/2019/12/21/21/15/man-4711375_640.jpg",
+       name : "Gaurav Khanal",
+       post : "CEO",
+       desc : "kdjakfja sldfasdjf lkajsdflkjasdlkfjaskdfj alsjdf adfjaslkdfjaslkdf asjflsakdjf asfjas dlfjasdlf jaslkdf alfjjdsla jfasldjf as" 
+    },
+    {
+        source : "https://cdn.pixabay.com/photo/2023/08/04/17/04/ai-generated-8169681_640.jpg",
+       name : "Meganion",
+       post : "Manager",
+       desc : " jkldasjf lasdlfajsdlf jasldjf lkasjdflkjasdf jasdlfjsalkdjflkasjdflkjasdlf ajfasld jflasdkjflasdjflkasjdfasjdf asljfasldjflasjdf" 
+    },
+    {
+        source : "https://cdn.pixabay.com/photo/2023/08/04/17/04/ai-generated-8169681_640.jpg",
+       name : "Meganion duplicate",
+       post : "duplicate Manager",
+       desc : " jkldasjf lasdlfajsdlf jasldjf lkasjdflkjasdf jasdlfjsalkdjflkasjdflkjasdlf ajfasld jflasdkjflasdjflkasjdfasjdf asljfasldjflasjdf" 
+    }
+]
+    const image = document.querySelector('#image')
+    const namae = document.querySelector('#name')
+    const post = document.querySelector('#post')
+    const description = document.querySelector('#description')
+    const nextBtn = document.querySelector('#next-btn')
+    const prevBtn = document.querySelector('#prev-btn')
+    let counter = -1;
+    window.addEventListener('DOMContentLoaded',()=>{
+        counter=counter+1
+        image.src = data[counter].source
+        namae.innerHTML = data[counter].name
+        post.innerHTML = data[counter].post
+        description.innerHTML = data[counter].desc
+    })
+    showData = ()=>{
+        image.src = data[counter].source
+        namae.innerHTML = data[counter].name
+        post.innerHTML = data[counter].post
+        description.innerHTML = data[counter].desc
+    }
+
+    nextBtn.addEventListener('click',()=>{
+        if(counter+1<data.length){
+            counter ++
+        }
+        else {
+        counter = 0;
+        }
+        showData();
+    })
+    prevBtn.addEventListener('click',()=>{
+        console.log(counter);
+        if(counter<1){
+            counter = (data.length)-1
+        }
+        else{
+            counter--
+        }
+        showData()
+    })
+</script>
+</html>
